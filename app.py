@@ -1,7 +1,12 @@
 todos = []
+filenames = ["1.Raw Data.txt", "2.Cleaned Data.txt", "3.Analyzed Data.txt"]
+
+for filename in filenames:
+    filename = filename.replace(".", "-", 1)
+    print(filename)
 
 while True:
-    todo = input("Enter 'add', 'show', 'edit' or 'exit': ")
+    todo = input("Enter 'add', 'complete', 'show', 'edit' or 'exit': ")
     todo = todo.strip().lower()
 
     match todo:
@@ -16,11 +21,17 @@ while True:
             index = int(input("Enter the number of the to-do item you want to edit: "))
             todo = input("Enter the new to-do: ")
             todos[index-1] = todo
+        case "complete":
+            index = int(input("Enter the number of the to-do item you want to complete: "))
+            todos.pop(index-1)
         case "exit":
             print("Goodbye!")
             break
         case _:
             print("Invalid input")
+
+
+
 
 
 
