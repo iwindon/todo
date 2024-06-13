@@ -1,9 +1,4 @@
 todos = []
-filenames = ["1.Raw Data.txt", "2.Cleaned Data.txt", "3.Analyzed Data.txt"]
-
-for filename in filenames:
-    filename = filename.replace(".", "-", 1)
-    print(filename)
 
 while True:
     todo = input("Enter 'add', 'complete', 'show', 'edit' or 'exit': ")
