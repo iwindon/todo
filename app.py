@@ -6,12 +6,20 @@ while True:
 
     match todo:
         case "add":
-            todo = input("Enter a to-do: ")       
+            todo = input("Enter a to-do: ") + "\n"
+            with open("todos.txt", "r") as file:
+                todos = file.readlines()
+
             todos.append(todo)
+            
+            with open("todos.txt", "w") as file:
+                file.writelines(todos)
         case "show":
             print("To-do list:")
+            with open("todos.txt", "r") as file:
+                todos = file.readlines()
             for i, todo in enumerate(todos):
-                print(f"{i+1}: {todo.title()}")
+                print(f"{i+1}: {todo.strip().title()}")
         case "edit":
             index = int(input("Enter the number of the to-do item you want to edit: "))
             todo = input("Enter the new to-do: ")
