@@ -1,4 +1,4 @@
-todos = []
+# todos = []
 
 while True:
     todo = input("Enter 'add', 'complete', 'show', 'edit' or 'exit': ")
@@ -7,16 +7,16 @@ while True:
     match todo:
         case "add":
             todo = input("Enter a to-do: ") + "\n"
-            with open("todos.txt", "r") as file:
+            with open("files/todos.txt", "r") as file:
                 todos = file.readlines()
 
             todos.append(todo)
             
-            with open("todos.txt", "w") as file:
+            with open("files/todos.txt", "w") as file:
                 file.writelines(todos)
         case "show":
             print("To-do list:")
-            with open("todos.txt", "r") as file:
+            with open("files/todos.txt", "r") as file:
                 todos = file.readlines()
             for i, todo in enumerate(todos):
                 print(f"{i+1}: {todo.strip().title()}")
