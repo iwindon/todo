@@ -1,2 +1,2 @@
-Program in python
 play games
+Read a book
