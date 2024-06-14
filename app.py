@@ -23,10 +23,20 @@ while True:
         case "edit":
             index = int(input("Enter the number of the to-do item you want to edit: "))
             todo = input("Enter the new to-do: ")
-            todos[index-1] = todo
+            with open("files/todos.txt", "r") as file:
+                todos = file.readlines()
+            todos[index-1] = todo + "\n"
+            with open("files/todos.txt", "w") as file:
+                file.writelines(todos)
         case "complete":
             index = int(input("Enter the number of the to-do item you want to complete: "))
+            with open("files/todos.txt", "r") as file:
+                todos = file.readlines()
+            todo_to_complete = todos[index-1]   
             todos.pop(index-1)
+            with open("files/todos.txt", "w") as file:
+                file.writelines(todos)
+            print(f"Completed: {todo_to_complete.strip().title()}")
         case "exit":
             print("Goodbye!")
             break
