@@ -1,2 +1,5 @@
 play games
 Read a book
+program in python
+study
+add a new method

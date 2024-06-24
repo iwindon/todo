@@ -6,22 +6,22 @@ while True:
     todo = input("Enter 'add', 'complete', 'show', 'edit' or 'exit': ")
     todo = todo.strip().lower()
 
-    if "add" in todo:
+    if todo.startswith("add"):
         todo = todo[4:]
         with open("files/todos.txt", "r") as file:
             todos = file.readlines()
 
-        todos.append(todo)
+        todos.append(todo + "\n")
         
         with open("files/todos.txt", "w") as file:
             file.writelines(todos)
-    elif "show" in todo:
+    elif todo.startswith("show"):
         print("To-do list:")
         with open("files/todos.txt", "r") as file:
             todos = file.readlines()
         for i, todo in enumerate(todos):
             print(f"{i+1}: {todo.strip().title()}")
-    elif "edit" in todo:
+    elif todo.startswith("edit"):
         index = int(todo[5:])
         todo = input("Enter the new to-do: ")
         with open("files/todos.txt", "r") as file:
@@ -29,7 +29,7 @@ while True:
         todos[index-1] = todo + "\n"
         with open("files/todos.txt", "w") as file:
             file.writelines(todos)
-    elif "complete" in todo:
+    elif todo.startswith("complete"):
         index = int(todo[9:])
         with open("files/todos.txt", "r") as file:
             todos = file.readlines()
@@ -38,7 +38,7 @@ while True:
         with open("files/todos.txt", "w") as file:
             file.writelines(todos)
         print(f"Completed: {todo_to_complete.strip().title()}")
-    elif "exit" in todo:
+    elif todo.startswith("exit"):
         print("Goodbye!")
         break
     else:
