@@ -38,14 +38,22 @@ while True:
             continue
 
     elif todo.startswith("complete"):
-        index = int(todo[9:])
-        with open("files/todos.txt", "r") as file:
-            todos = file.readlines()
-        todo_to_complete = todos[index-1]   
-        todos.pop(index-1)
-        with open("files/todos.txt", "w") as file:
-            file.writelines(todos)
-        print(f"Completed: {todo_to_complete.strip().title()}")
+        try:
+            index = int(todo[9:])
+            with open("files/todos.txt", "r") as file:
+                todos = file.readlines()
+            todo_to_complete = todos[index-1]   
+            todos.pop(index-1)
+            with open("files/todos.txt", "w") as file:
+                file.writelines(todos)
+            print(f"Completed: {todo_to_complete.strip().title()}")
+        except ValueError:
+            print("Invalid input. Please enter the item number.  Please try again.")
+            continue
+        except IndexError:
+            print("Invalid number. Please try again.")
+            continue
+        
     elif todo.startswith("exit"):
         print("Goodbye!")
         break
