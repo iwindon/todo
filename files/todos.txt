@@ -1,4 +1,4 @@
 play games
 Read a book
-program in python
-study book
+python programming
+study
